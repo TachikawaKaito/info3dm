@@ -7,10 +7,15 @@ print(X)
 print(X[0])
 print(Y)
 
+# regression ver1
 model = regression.LinearRegression()
 print(model.x)
 
+# regression ver2
 importlib.reload(regression)
 model = regression.LinearRegression()
 model.fit(X, Y)
 print(model.theta)
+
+# regression ver3
+print(model.predict(X))
