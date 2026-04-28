@@ -1,0 +1,13 @@
+import matplotlib.pyplot as plt
+import dataset1
+import numpy as np
+
+x = np.linspace(-1, 1, 100)
+y = dataset1.true_function(x)
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.plot(x, y, color="blue", label="y = sin(pi * x * 0.8) * 10")
+plt.legend(loc="best")
+plt.show()
+
