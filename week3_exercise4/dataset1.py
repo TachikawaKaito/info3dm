@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import unittest
 
 def true_function(x):
     return np.sin(np.pi * x * 0.8) * 10
@@ -13,7 +15,47 @@ def create_datasets():
     y = true_function(x)
 
     df = pd.DataFrame({
-        "観測値" : x,
+        "観測点" : x,
         "真値" : y,
     })
     return df
+
+class TestTrueFunction(unittest.TestCase):
+    def test_x_0(self):
+        y = true_function(0)
+        self.assertAlmostEqual(y, 0)
+
+if __name__ == "__main__":
+
+    # 演習1.1
+
+    # テスト
+    unittest.main(exit=False)
+
+    x = np.linspace(-1, 1, 100)
+    y = true_function(x)
+
+    plt.figure(figsize=(8,5))
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.plot(x, y, color="blue", label=r"$y = \sin(0.8 \pi x) \times 10$")
+    plt.legend(loc="best")
+    plt.savefig("week3_exercise4/ex1.1.png")
+
+    plt.show()
+
+
+    # 演習1.2
+    x = np.linspace(-1, 1, 100)
+    y = true_function(x)
+
+    df = create_datasets()
+
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.plot(x, y, color="blue", label=r"$y = \sin(0.8 \pi x) \times 10$")
+    plt.scatter(df["観測点"], df["真値"], color="red", label="samples")
+    plt.legend()
+    plt.savefig("week3_exercise4/ex1.2.png")
+
+    plt.show()
