@@ -83,3 +83,17 @@ if __name__ == "__main__":
     plt.savefig("week3_exercise4/ex1.3.png")
 
     plt.show()
+
+    # 演習1.4
+    x = np.linspace(-1, 1, 100)
+    y = true_function(x)
+
+    df = create_datasets()
+
+    noise = np.random.normal(loc=0.0, scale=np.sqrt(2.0), size=20)
+    noise_half = noise * 0.5
+
+    df["観測値"] = df["真値"] + noise_half
+
+    df.to_csv("week3_exercise4/data.tsv", sep="\t", index=False)
+    
