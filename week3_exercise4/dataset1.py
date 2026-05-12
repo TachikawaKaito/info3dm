@@ -96,4 +96,7 @@ if __name__ == "__main__":
     df["観測値"] = df["真値"] + noise_half
 
     df.to_csv("week3_exercise4/data.tsv", sep="\t", index=False)
-    
+
+    # 演習1.5
+    df = pd.read_csv("week3_exercise4/data.tsv", sep="\t")
+    print(df)
